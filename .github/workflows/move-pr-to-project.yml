@@ -12,7 +12,7 @@ jobs:
         if: github.event.action == 'opened'
         uses: actions/add-to-project@v0.5.0
         with:
-          project-url: https://github.com/yourusername/yourrepo/projects/1
+          project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'In Progress'
 
@@ -20,7 +20,7 @@ jobs:
         if: github.event.action == 'ready_for_review'
         uses: actions/add-to-project@v0.5.0
         with:
-          project-url: https://github.com/yourusername/yourrepo/projects/1
+          project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'In Review'
 
@@ -28,6 +28,6 @@ jobs:
         if: github.event.action == 'closed'
         uses: actions/add-to-project@v0.5.0
         with:
-          project-url: https://github.com/yourusername/yourrepo/projects/1
+          project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'Done'
