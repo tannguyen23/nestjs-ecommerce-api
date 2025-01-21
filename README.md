@@ -1,9 +1,11 @@
 # NestJS E-Commerce API
 
 ## Description
+
 A backend API for an E-Commerce system built with **NestJS** and **TypeScript**, featuring **PostgreSQL**, **JWT authentication**, **Stripe payment integration**, and **WebSockets** for real-time notifications. The API includes product management, order processing, user authentication, and Swagger documentation.
 
 ## Features
+
 - **User Authentication & Authorization:**
   - JWT-based authentication
   - OAuth2 (Google, Facebook login)
@@ -28,7 +30,9 @@ A backend API for an E-Commerce system built with **NestJS** and **TypeScript**,
 ## Installation
 
 ### Prerequisites
+
 Ensure you have the following installed:
+
 - Node.js (>= 16.x)
 - PostgreSQL or MySQL
 - Docker (optional)
@@ -36,18 +40,21 @@ Ensure you have the following installed:
 ### Steps to Install
 
 1. **Clone the repository:**
+
    ```bash
    git clone https://github.com/yourusername/nestjs-ecommerce-api.git
    cd nestjs-ecommerce-api
    ```
 
 2. **Install dependencies:**
+
    ```bash
    npm install
    ```
 
 3. **Setup environment variables:**
    Create a `.env` file in the root directory and add the following:
+
    ```env
    PORT=3000
    DATABASE_URL=postgres://user:password@localhost:5432/ecommerce
@@ -56,11 +63,13 @@ Ensure you have the following installed:
    ```
 
 4. **Run database migrations:**
+
    ```bash
    npm run typeorm migration:run
    ```
 
 5. **Start the application:**
+
    ```bash
    npm run start:dev
    ```
@@ -72,6 +81,7 @@ Ensure you have the following installed:
 ## Running the Tests
 
 - **Unit Tests:**
+
   ```bash
   npm run test
   ```
@@ -84,6 +94,7 @@ Ensure you have the following installed:
 ## Deployment
 
 1. **Build the application:**
+
    ```bash
    npm run build
    ```
@@ -95,13 +106,13 @@ Ensure you have the following installed:
 
 ## API Endpoints
 
-| Method | Endpoint        | Description                |
-|--------|----------------|----------------------------|
-| POST   | /auth/register  | Register a new user        |
-| POST   | /auth/login     | Authenticate a user        |
-| GET    | /products       | Get all products           |
-| POST   | /orders         | Create a new order         |
-| GET    | /orders/:id     | Get order details          |
+| Method | Endpoint       | Description         |
+| ------ | -------------- | ------------------- |
+| POST   | /auth/register | Register a new user |
+| POST   | /auth/login    | Authenticate a user |
+| GET    | /products      | Get all products    |
+| POST   | /orders        | Create a new order  |
+| GET    | /orders/:id    | Get order details   |
 
 ## Folder Structure
 
@@ -124,15 +135,18 @@ nestjs-ecommerce-api/
 ```
 
 ## Contributing
+
 Contributions are welcome! Please follow these steps:
+
 1. Fork the repository.
 2. Create a new branch (`feature/your-feature`).
 3. Commit your changes.
 4. Push to your forked repo and submit a pull request.
 
 ## License
+
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any inquiries, please contact [tanta2358@gmail.com](mailto:tanta2358@gmail.com).
 
+For any inquiries, please contact [tanta2358@gmail.com](mailto:tanta2358@gmail.com).
