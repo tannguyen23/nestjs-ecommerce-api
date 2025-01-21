@@ -13,7 +13,7 @@ jobs:
         uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/yourusername/yourrepo/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'In Progress'
 
       - name: Move PR to 'In Review' when marked ready
@@ -21,7 +21,7 @@ jobs:
         uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/yourusername/yourrepo/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'In Review'
 
       - name: Move PR to 'Done' when closed
@@ -29,5 +29,5 @@ jobs:
         uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/yourusername/yourrepo/projects/1
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           labeled: 'Done'
