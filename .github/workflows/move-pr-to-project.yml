@@ -14,7 +14,7 @@ jobs:
         with:
           project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          labeled: 'In Progress'
+          labeled: 'In_Progress'
 
       - name: Move PR to 'In Review' when marked ready
         if: github.event.action == 'ready_for_review'
@@ -22,7 +22,7 @@ jobs:
         with:
           project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          labeled: 'In Review'
+          labeled: 'In_Review'
 
       - name: Move PR to 'Done' when closed
         if: github.event.action == 'closed'
