@@ -8,25 +8,25 @@ jobs:
   update_project:
     runs-on: ubuntu-latest
     steps:
-      - name: Move PR to 'in_progress' when opened
+      - name: Move PR to 'In Progress' when opened
         if: github.event.action == 'opened'
-        uses: peter-evans/add-to-project@v0.5.0
+        uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           status: 'In Progress'
 
-      - name: Move PR to 'in_review' when marked ready
+      - name: Move PR to 'In Review' when marked ready
         if: github.event.action == 'ready_for_review'
-        uses: peter-evans/add-to-project@v0.5.0
+        uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           status: 'In Review'
 
-      - name: Move PR to 'done' when closed
+      - name: Move PR to 'Done' when closed
         if: github.event.action == 'closed'
-        uses: peter-evans/add-to-project@v0.5.0
+        uses: actions/add-to-project@v0.5.0
         with:
           project-url: https://github.com/users/tannguyen23/projects/1
           github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
