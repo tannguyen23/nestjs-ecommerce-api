@@ -20,35 +20,32 @@ jobs:
       - name: Move PR to 'In Progress' when opened
         if: github.event.action == 'opened'
         run: |
-          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
+          PR_ID=$(gh pr view ${{ github.event.pull_request.number }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
           echo "PR ID is $PR_ID"
-          gh project item-update \
-            --owner tannguyen23 \
-            --project-name "Tasks" \
+          gh project item-edit \
             --id $PR_ID \
+            --project-id PVT_kwHOA-q6RM4AwdvH \
             --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
-            --value-id 47fc9ee4
+            --single-select-option-id 47fc9ee4
 
       - name: Move PR to 'In Review' when marked ready
         if: github.event.action == 'ready_for_review'
         run: |
-          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
+          PR_ID=$(gh pr view ${{ github.event.pull_request.number }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
           echo "PR ID is $PR_ID"
-          gh project item-update \
-            --owner tannguyen23 \
-            --project-name "Tasks" \
+          gh project item-edit \
             --id $PR_ID \
+            --project-id PVT_kwHOA-q6RM4AwdvH \
             --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
-            --value-id df73e18b
+            --single-select-option-id df73e18b
 
       - name: Move PR to 'Done' when closed
         if: github.event.action == 'closed'
         run: |
-          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
+          PR_ID=$(gh pr view ${{ github.event.pull_request.number }} --repo tannguyen23/nestjs-ecommerce-api --json id --jq '.id')
           echo "PR ID is $PR_ID"
-          gh project item-update \
-            --owner tannguyen23 \
-            --project-name "Tasks" \
+          gh project item-edit \
             --id $PR_ID \
+            --project-id PVT_kwHOA-q6RM4AwdvH \
             --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
-            --value-id 98236657
+            --single-select-option-id 98236657
