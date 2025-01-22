@@ -1,4 +1,4 @@
-name: Move PR to Project Board
+name: Move PR to Project Board using GH CLI
 
 on:
   pull_request:
@@ -7,27 +7,45 @@ on:
 jobs:
   update_project:
     runs-on: ubuntu-latest
+
     steps:
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install gh -y
+
+      - name: Authenticate GitHub CLI
+        run: echo "${{ secrets.PERSONAL_ACCESS_TOKEN }}" | gh auth login --with-token
+
       - name: Move PR to 'In Progress' when opened
         if: github.event.action == 'opened'
-        uses: actions/add-to-project@v0.5.0
-        with:
-          project-url: https://github.com/users/tannguyen23/projects/1
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          status: 'In Progress'
+        run: |
+          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --json id --jq .id)
+          gh project item-update \
+            --owner tannguyen23 \
+            --project-name "Tasks" \
+            --id $PR_ID \
+            --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
+            --value-id 47fc9ee4
 
       - name: Move PR to 'In Review' when marked ready
         if: github.event.action == 'ready_for_review'
-        uses: actions/add-to-project@v0.5.0
-        with:
-          project-url: https://github.com/users/tannguyen23/projects/1
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          status: 'In Review'
+        run: |
+          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --json id --jq .id)
+          gh project item-update \
+            --owner tannguyen23 \
+            --project-name "Tasks" \
+            --id $PR_ID \
+            --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
+            --value-id df73e18b
 
       - name: Move PR to 'Done' when closed
         if: github.event.action == 'closed'
-        uses: actions/add-to-project@v0.5.0
-        with:
-          project-url: https://github.com/users/tannguyen23/projects/1
-          github-token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          status: 'Done'
+        run: |
+          PR_ID=$(gh pr view ${{ github.event.pull_request.html_url }} --json id --jq .id)
+          gh project item-update \
+            --owner tannguyen23 \
+            --project-name "Tasks" \
+            --id $PR_ID \
+            --field-id PVTSSF_lAHOA-q6RM4AwdvHzgmuwfA \
+            --value-id 98236657
