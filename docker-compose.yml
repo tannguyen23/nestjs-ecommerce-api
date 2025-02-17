@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Service
+  postgres:
+    image: postgres:latest
+    restart: always
+    container_name: nestjs_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: nestjs_db
+    ports:
+      - "5555:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+  # NestJS Backend
+  backend:
+    build: .
+    container_name: nestjs_backend
+    restart: always
+    depends_on:
+      - postgres
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_USER: postgres
+      DB_PASSWORD: 123
+      DB_NAME: nestjs_db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+      - /app/node_modules 
+
+volumes:
+  postgres_data:

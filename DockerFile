@@ -1,0 +1,23 @@
+# Sử dụng Node.js phiên bản LTS
+FROM node:18
+
+# Đặt thư mục làm việc bên trong container
+WORKDIR /app
+
+# Copy package.json và package-lock.json
+COPY package*.json ./
+
+# Cài đặt dependencies
+RUN npm install
+
+# Copy toàn bộ mã nguồn vào container
+COPY . .
+
+# Biên dịch TypeScript (nếu bạn dùng NestJS với TS)
+RUN npm run build
+
+# Mở cổng API
+EXPOSE 3000
+
+# Chạy ứng dụng
+CMD ["npm", "run", "start:dev"]
